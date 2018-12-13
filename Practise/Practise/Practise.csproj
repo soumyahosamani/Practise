@@ -49,6 +49,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Ds_Algos\Ds_Algos.csproj">
+      <Project>{4cdcc3c6-545c-4acc-92a0-2986bb534b3a}</Project>
+      <Name>Ds_Algos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\LangFeatures\LangFeatures.csproj">
       <Project>{53375eb6-020c-4eb1-8861-437f4fa9b23f}</Project>
       <Name>LangFeatures</Name>

@@ -31,8 +31,16 @@ namespace WPFUI
             // UI Thread.. 
             LoginButton.IsEnabled = false;
             LoginButton.Content = "waiting..";
-            var result = await LoginAsync();
-            LoginButton.Content = result;
+            try
+            {
+                var result = await LoginAsync();
+                LoginButton.Content = result;
+            }
+            catch(Exception ex)
+            {
+                LoginButton.Content = ex.Message;
+            }
+            
         }
 
 
@@ -42,6 +50,7 @@ namespace WPFUI
                 {
                     // different thread.
                     Thread.Sleep(1000);
+                    throw new ArgumentException("DSFJSDJFJDJ");
                     return "welcome";
             }
                 );

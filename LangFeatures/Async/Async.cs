@@ -30,7 +30,7 @@ namespace LangFeatures.Async
             });
             ContTask.ContinueWith(t => Print("Inside continum"));
             ContTask.Start();
-            Print("TestMethod Thread End ");            
+            Print("TestMethod Thread End ");  
         }
 
 
@@ -50,8 +50,26 @@ namespace LangFeatures.Async
 
         public int GetSum(int a, int b)
         {
-            Thread.Sleep(1000);
+            Thread.Sleep(1000);            
             return a + b;
+        }
+
+        public async Task<int> GetSumAsync(int a, int b)
+        {
+           await Task.Run( () =>  Thread.Sleep(1000));
+           return a + b;
+        }
+
+        public int ErrorMethod(string input)
+        {
+            Print(input);
+            throw new ArgumentException(input);
+            return 0;
+        }
+
+        public Task<int> ErrorTask(string input)
+        {
+            return Task.Factory.StartNew<int>(() =>  ErrorMethod(input));            
         }
 
         private void Print(string message)
